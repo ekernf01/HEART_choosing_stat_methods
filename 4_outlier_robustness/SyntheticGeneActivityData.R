@@ -16,7 +16,7 @@ GeneActivity = as.data.frame(t(read.csv("SyntheticGeneActivityData.csv", row.nam
   dev.off()
 }
 
-# DON'T USE MY SOLUTIONS, THEY'RE A SECRET!
+# My solutions -- linear regression and quantile regression
 ls = lm(velocity_x_g7 ~ x_g7, data = GeneActivity)
 qr = quantreg::rq(velocity_x_g7 ~ x_g7, data = GeneActivity)
 plot(GeneActivity$x_g7, GeneActivity$velocity_x_g7, 
