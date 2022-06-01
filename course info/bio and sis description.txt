@@ -1,0 +1,8 @@
+
+Short Bio (for HEART website)
+
+Eric Kernfeld is a JHU BME PhD candidate jointly advised by Alexis Battle and Patrick Cahan. His work focuses on genomic data analysis, and it is driven by deep engagement with biologists — so far, mostly stem cell biologists. Before starting at JHU, Eric received an M.S. in Statistics at the University of Washington, and he analyzed data for René Maehr's lab at the University of Massachusetts Medical School, which studies the development of adaptive immunity. His doctoral work asks what switches each gene on and off. He aims to understand the extent to which modern or near-future genome measurement technologies can detemine these on/off switches en masse.
+
+Short Course Description 
+
+This is a class about using computers to gain insight from large numbers of measurements (mostly measurements of genes). In stark contrast to most such classes, this class puts "why" first and "how" second. Amidst the ever-growing jungle of quantitative methods, we will apply principles that help decide what methods to use.
