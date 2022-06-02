@@ -20,7 +20,7 @@ In economics, the money supply followed predictable yearly bumps and whorls -- u
 
 *Canadian money supply during the early days of the pandemic, from [JP Koning](http://jpkoning.blogspot.com/2020/07/how-pandemic-has-clogged-global-economy.html)*.
 
-In today's session, we will illustrate the principle that sometimes, *an estimator must tolerate outliers*.
+In today's session, we will illustrate the principle that sometimes, *an estimator must not respond to outliers*.
 
 ### Exercises
 
@@ -48,7 +48,7 @@ I chose each chart for a rhetorical reason.
 
 Determine the constant of proportionality for the decay rate. Email your R code and report to Eric as `LAST_FIRST_outliers.R` and `LAST_FIRST_outliers.docx`.
 
-1. Download the data and the starter script. The columns for genes 7 and its velocity are `x_g7` and `velocity_x_g7`. Reproduce the two plots above. 
+1. Download the [data](https://github.com/ekernf01/HEART_choosing_stat_methods/blob/main/course%20content/4_outlier_robustness/SyntheticGeneActivityData.csv) and the [starter script](https://github.com/ekernf01/HEART_choosing_stat_methods/blob/main/course%20content/4_outlier_robustness/SyntheticGeneActivityData.R). The columns for genes 7 and its velocity are `x_g7` and `velocity_x_g7`. Reproduce the two plots above. 
 2. Add a least-squares line of best fit to the second plot. This is analogous to a sample mean. You can using the R function `lm` to find the slope and intercept, and you can use the `abline` function to add a line with the same slope and intercept to the plot. Observe how truly pathetic it is. Sneer at it. Stop sneering. Move on. 
 3. There is another type of line of best fit analogous to the median called *quantile regression*. Add a quantile regression line of best fit. You can use the `quantreg` R package, but you probably will need to install it first.
 4. How else could you capture the trend in this dataset? Get creative and come up with a better solution. 

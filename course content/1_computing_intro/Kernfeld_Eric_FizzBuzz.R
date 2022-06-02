@@ -14,8 +14,16 @@ FizzBuzzOne = function(i){
     }
     output
 }
-# Apply it to all numbers
-FizzBuzz = function(N) sapply(1:N, FizzBuzzOne)
+# Apply it to all numbers with the lapply function.
+FizzBuzz = function(N) lapply(1:N, FizzBuzzOne)
+# Here's another way to do the same thing.
+FizzBuzzLoop = function(N){
+  result = rep(NA, N)
+  for(i in 1:N){
+    result[i] = FizzBuzzOne(i)
+  }
+  return(result)
+} 
 
 # Test cases
 FizzBuzzOne(3)
