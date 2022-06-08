@@ -29,14 +29,10 @@ Type your answers in a Word document and your code in an R script and email them
 2. Estimate the variance across the 1000 people by method 1 and method 2. Store the results in a separate dataframe with one row and two columns.
 3. Using `lapply` or a `for` loop, repeat this 2000 times. To store the results, extend the second dataframe to have 2000 rows and 2 columns.
 4. Plot the results as a scatterplot (method 1 vs method 2) and a pair of histograms (method 1 vs method 2). 
-5. Which estimation method is higher on average?
-6. Which estimation method is more stable on average?
-7. Which estimation method is closer to the truth on average? The variance of a binomial random variable with N trials and probability $p$ is $Np(1-p)$. If you didn't get to see why in the probability lecture, or if you want a refresher, ask and we can work through it at the board.
-8. What allele frequency did you choose? Wrap all your code in a function that takes an allele frequency as input. Repeat the test at 3 very different allele frequencies and comment on the results.
+5. Which estimation method is closer to the truth on average? The variance of a binomial random variable with N trials and probability $p$ is $Np(1-p)$. If you didn't get to see why in the probability lecture, or if you want a refresher, ask and we can work through it at the board.
+6. What allele frequency did you choose? Wrap all your code in a function that takes an allele frequency as input. Repeat the test at 3 very different allele frequencies and comment on the results.
 
 
-### TTIMCTYCUA: the truth is more complex than your classes usually admit
+### Footnotes
 
-- Actually, population allele frequency is usually described as being between 0 and 1, not 0 and 2, but I'll ignore that here. 
-- For today, you may assume you have a simple random sample that is representative of "everybody". You may assume that people only share alleles by chance (there are no family members). In real studies, you have to be more careful about family members, whose genotypes are not independent. Given current trends, you also have to make specific plans to get reasonable representation of non-European ancestries.
- 
+Population allele frequency is usually described as being between 0 and 1, not 0 and 2, but I'll ignore that here. For today, you may assume you have a simple random sample that is representative of "everybody". You may assume that people only share alleles by chance (there are no family members). In real studies, you have to be more careful about family members, whose genotypes are not independent. Given current trends, you also have to make specific plans to get substantial representation of non-European ancestries in most large human genetics studies. This has a big effect on allele frequencies. 

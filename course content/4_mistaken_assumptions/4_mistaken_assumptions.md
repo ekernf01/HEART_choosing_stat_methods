@@ -2,7 +2,13 @@
 
 Statistical inference requires assumptions, often starting with a claim like "X follows a Binomial distribution" or "X and Y have a linear relationship." This is unfortunate and limiting: there are many cases when we just don't know the distribution of the data or the form of a function. One major agenda in modern statistics is to reduce these assumptions to their barest form. 
 
-This is often done by making models that are infinitely flexible in some way: lines of best fit that [bend and wiggle](https://en.wikipedia.org/wiki/Kernel_regression), categorical assignments with [no limit](https://www.ncbi.nlm.nih.gov/labs/pmc/articles/PMC6583910/) on the number of categories, probability mass functions with [no pre-specified shape](https://en.wikipedia.org/wiki/Kernel_density_estimation) or generating mechanism, or procedures that require not specific distributions ("Binomial", "Normal") but only abstract properties ("non-decreasing", "symmetric", "independent", "exchangeable"). We won't have the mathematical firepower to dig into these yet, but spectacular examples of this type of analysis include [generalized estimating equations](https://en.wikipedia.org/wiki/Generalized_estimating_equation), [doubly-robust causal effect estimation](https://arxiv.org/abs/0804.2958), and [causal effect estimation with many invalid instrumental variables](https://arxiv.org/abs/1401.5755). The common thread here is the ability to say, "Even if my method is wrong about some part of the data generating mechanism, it will yield results that are reliable in some specific sense." 
+This is often done by making models that are infinitely flexible in some way: lines of best fit that [bend and wiggle](https://en.wikipedia.org/wiki/Kernel_regression), categorical assignments with [no limit](https://www.ncbi.nlm.nih.gov/labs/pmc/articles/PMC6583910/) on the number of categories, probability mass functions with [no pre-specified shape](https://en.wikipedia.org/wiki/Kernel_density_estimation) or generating mechanism, or procedures that require not specific distributions ("Binomial", "Normal") but only abstract properties ("non-decreasing", "symmetric", "independent", "exchangeable"). We won't have the mathematical firepower to dig into these yet, but spectacular examples of this type of analysis include 
+
+- [generalized estimating equations](https://en.wikipedia.org/wiki/Generalized_estimating_equation)
+- [doubly-robust causal effect estimation](https://arxiv.org/abs/0804.2958)
+- [causal effect estimation with many invalid instrumental variables](https://arxiv.org/abs/1401.5755)
+
+The common thread here is the ability to say, "Even if my method is wrong about some part of the data generating mechanism, it will yield results that are reliable in some specific sense." 
 
 In this session, we will explore the principle that sometimes, a statistical method must tolerate when its assumptions are mistaken. 
 
