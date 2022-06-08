@@ -1,6 +1,6 @@
 ## Probability theory 
 
-The class is about statistics. This lecture is about probability. They are not the same, but they are related. 
+The class is about statistics. This session is about probability. They are not the same, but they are related. 
 
 **Probability theory** is a branch of mathematics that precisely describes random processes. It initially centered around gambling, but by the early 1900's, it took hold in science, and it was growing in response to questions in genetics, physics, and financial economics. Here's a classic probability problem. *Suppose a stock price changes by 0.1% every hour, going up with 51% probability and down with 49% probability. What is the chance it will exceed a 3% increase some time in the first 30 days?*
 
@@ -23,7 +23,8 @@ This course will consider mathematical questions and empirical questions, as wel
 
 This might seem like too much information at once. Try it anyway, and be patient. The exercises below will give you a chance to practice at a slower pace.
 
-- A "random variable" is exactly what it sounds like: a number that results from a random process, such as a coin flip, a card deck shuffle, a decaying radioisotope, a meiotic recombination, a stock market fluctuation, or a thermal motion at nanometer scale. A "binomial" random variable is what you get by flipping a coin $N$ times (each with probability $p$ for heads and $1-p$ for tails) and counting the number of heads. 
+- A "random variable" is exactly what it sounds like: a number that results from a random process, such as a coin flip, a card deck shuffle, a decaying radioisotope, a meiotic recombination, a stock market fluctuation, or a thermal motion at nanometer scale. 
+- A "binomial" random variable is what you get by flipping a coin $N$ times (each with probability $p$ for heads and $1-p$ for tails) and counting the number of heads. 
 - A "probability mass function" takes possible values of a random variable as input and yields their probabilities as output. If my random variable is the number of heads after two coin flips, the inputs to the PMF can be 0, 1, or 2. The outputs would be 25%, 50%, and 25% respectively. In symbols, $f_X(0) = f_X(2) = 0.25$ and $f_X(1) = 0.5$, where $f$ is the probability mass function and $X$ is the random variable. 
 - The "expected value" or "the mean" is the average over all possible results, each weighted by its probability. In the example, it is $0.25 \times 0 + 0.5 \times 1 + 0.25 \times 2 = 1$. For a random variable $X$, the expected value is written $E[X]$.
 - The "variance" is the expected value of the square of the distance to the mean. (Squaring it prevents it from being negative.) In the example, it is $0.25 \times (0-1)^2 + 0.5 \times (1-1)^2 + 0.25 \times (2-1)^2 = 0.5$. For a random variable $X$, the variance is written $Var[X]$.
@@ -44,12 +45,11 @@ Next, we will take some time to experience the probability rules and definitions
 
 Type your answers in a Word document and your code in an R script and email them to Eric as `LAST_FIRST_binomial.docx` and `LAST_FIRST_binomial.R`. If you want to write math symbols more easily, you could also try writing **markdown** using an editor like [this one](https://upmath.me/).
 
-1. If the coin is weighted to have a 1/3 chance of landing heads, but you still flip it twice, then what is the PMF of the total number of heads? The expectation? The variance? What if you flip it 3 times?
+1. If the coin is weighted to have a 1/3 chance of landing heads, and you flip it twice, then what is the PMF of the total number of heads? The expectation? The variance? 
 2. Suppose the coins we flip follow a "herd mentality". The second coin, if it sees the first land heads, will also land heads. If it sees the first show tails, it will show tails as well. How does the table above change? What is the expected value? The variance? 
-3. Write a function in R to compute the expected value and variance of a binomial random variable given the number of trials and the success probability. You may use the built-in function for the PMF, which is called `dbinom`. 
-    - Write out problem 1 as a test case to ensure your code is correct. 
-4. Draw 10,000 independent binomial random variable's, each with 25 trials and success probability $0.12345$. Estimate the mean and variance of the results from your samples. You can use the built-in functions `mean` and `var`. Are the estimates close to what your code would predict?
-5. You can represent a binomial random variable as a sum of independent random variables, each of which is mathematically simple on its own. This leads to simple, efficient formulas for the mean and variance that work for any $p$ and $n$. Figure out how to do this. Report your thought process and your results in terms of $p$ and $n$. (For instance, this is wrong but the format is correct: $E[X] = n^2/p^2$.) Use the properties $E[X + Y] = E[X] + E[Y]$ and (for independent random variables), $Var[X + Y] = Var[X] + Var[Y]$.
+3. Write a function in R to compute the expected value and variance of a binomial random variable given the number of trials and the success probability. Use the definitions, even if you are aware of a more convenient method. You may use the built-in function for the PMF, which is called `dbinom`. Write out problem 1 as a test case to ensure your code is correct. 
+4. Draw 10,000 independent binomial random variables, each with 25 trials and success probability $0.12345$. Estimate the mean and variance of the results from your samples. You can use the built-in functions `mean` and `var`. Also compute the mean and variance from your code for the previous question. Are the estimates close to what your code would predict?
+5. You can represent a binomial random variable as a sum of independent random variables, each of which is mathematically simple on its own. This leads to simple, efficient formulas for the mean and variance that work for any $p$ and $n$. Figure out how to do this. Report your thought process and your results in terms of $p$ and $n$. (For instance, this is wrong but the format is correct: $E[X] = n^2/p^2$.) Use the properties $E[X + Y] = E[X] + E[Y]$ and $Var[X + Y] = Var[X] + Var[Y]$. This could be disorienting. If you can't get started, we can provide a scaffold to structure your calculations.
 6. Above, you used the built-in `R` function `dbinom`. It would be nice to know what that does. What is the PMF of a binomial random variable with success probability $p$ over $n$ independent trials? Look it up on Wikipedia or a reference of your choice. Explain why each component of the formula is present and what would happen if you left each part out.
 
 

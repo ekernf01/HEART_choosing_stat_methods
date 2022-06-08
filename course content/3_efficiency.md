@@ -6,6 +6,11 @@ In today's demo, you are motivated by the need to make efficient use of limited 
 
 This aspect of statistics is EXTREMELY heavily studied, and there are some common techniques that automatically inherit justifications about being the most powerful or most efficient option. These include maximum likelihood estimation, which chooses parameters to maximize the probability of the observed data, and Bayesian inference, which imposes certain prior assumptions on the unknown parameters and then rigidly follows the rules of mathematical probability. There are also competing techniques with other virtues that you might use sometimes, even though they are not the most efficient. In these situations, what are you gaining or losing with one method or the other?
 
+### Learning objectives
+
+- Define the variance of a random variable.
+- Via simulation, compare two different methods to estimate the variance of a binomial random variable. Determine which method is more efficient.
+
 ### Exercises
 
 In human genetics, samples often contain people of multiple ancestries, and separating them out can be interesting and useful for anthropology and medical studies. This is usually best done using genetic data themselves. Some methods for doing this attempt to operate in a way that gives equal weight to each locus. (A **locus** is a spot on the genome; the plural of **locus** is **loci**.) In other words, loci with high variance are not supposed to influence the results more than loci with low variance. This example is about estimating genotype variance at some genetic loci, so you can later assign them the right weight. 
