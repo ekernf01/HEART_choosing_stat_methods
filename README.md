@@ -8,7 +8,6 @@ This course will balance the scales, helping students guide their choice of meth
 
 Principles that may be discussed:
 
-- Minimize a deliberately chosen cost function
 - Tolerate mistaken assumptions 
 - Tolerate outliers 
 - Make efficient use of limited samples
