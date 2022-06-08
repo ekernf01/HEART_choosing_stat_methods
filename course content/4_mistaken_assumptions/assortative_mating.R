@@ -47,3 +47,13 @@ var(generateAlleleCounts(0.3, 0, 100000))
 computeVariance(0.3, 1)
 var(generateAlleleCounts(0.3, 1, 100000))
 
+# How I generated the data for the last question
+library("magrittr")
+filenames = paste0("demo", 1:9, ".csv")
+for(f in filenames){
+  am = sample(c(0, 0.3), 1)
+  sapply( (1:9)/10, function(af) generateAlleleCounts(af, am, 1000) ) %>% 
+    as.data.frame %>% 
+    set_colnames(paste0("Locus", 1:9)) %>% 
+    write.csv(f)
+}
