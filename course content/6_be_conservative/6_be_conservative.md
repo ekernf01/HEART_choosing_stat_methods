@@ -15,11 +15,11 @@ In at least one very common domain, there are fundamental tradeoffs at play so t
 
 ### Linear regression 
 
-In order to have enough context to continue on this topic, I need to take a detour and discuss *linear regression*. You saw linear regression in the session on outliers. 
+In order to have enough context to continue on this topic, I need to take a detour and discuss *linear regression*. You saw linear regression in the session on outliers. We used it to try to capture the line in this plot, and we tried to modify it to ignore outliers. 
 
 ![The chart showing RNA levels (x axis) versus RNA velocity (y axis) for gene 7 from the outliers session.](gene7_rna_vs_rna_velocity.png)
 
-Linear regression just means fitting a line to a set of data on an X-Y scatterplot. If $Y \approx \beta_0 + \beta_1 X$, the task is to choose the best slope $\beta_1$ and the y-intercept $\beta_0$. 
+Linear regression just means fitting a line to a set of data on an X-Y scatterplot. If $Y \approx \beta_0 + \beta_1 X$, the task is to choose the slope $\beta_1$ and the y-intercept $\beta_0$. 
 
 ![From the Wikipedia article on linear regression. Public domain; by Oleg Alexandrov.](220px-Linear_least_squares_example2.png)
 
@@ -29,16 +29,16 @@ $$(Y_1 - \beta_0 + \beta_1 X_1)^2 + ... + (Y_N - \beta_0 + \beta_1 X_N)^2$$
     
 .  This is the sum of the squares of the lengths of the *vertical green lines* in the picture.
 
-I anticipate that this formula will raise some questions, but the main point of this session has not yet arrived, so let me anticipate two questions and discuss only briefly before continuing. First, it's great that `lm` can minimize the sum of squared errors, but how? Unfortunately, this writeup won't discuss how, because this class is about asking not "How?" but "Why?". One good way to learn how `lm` works is to take a class in linear algebra, and ask about the QR matrix decomposition. 
+I anticipate that this formula will raise some questions, but the main point of this session has not yet arrived, so let me anticipate two questions and discuss only briefly before continuing. First, it's great that `lm` can minimize the sum of squared errors, but how? For better or worse, this class is about not "How?" but "Why?", so I decline to discuss this. One good way to learn how `lm` works is to take a class in linear algebra, and towards the end, ask about the QR matrix decomposition. 
 
 Second, why use the sum of squared errors, and not some other "goodness of fit" measure? We are using it for the class because it is one of the simplest things to do, both in terms of mathematical analysis and algorithmic implementation. But much of the time, the sum of squared errors is not the best thing to minimize -- for example, the sum of squares will be very sensitive to outliers. There are many other options, and to learn about them, you could look for classes in regression methods, generalized linear models, or supervised machine learning. One very useful mathematical finding is the [Gauss-Markov Theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem). It describes limited circumstances when minimizing the sum of squares is the best possible choice.
+
+### Variable selection
 
 Linear regression is often done using more than one $X$ value for each observation. In those cases, it is harder to picture because the XY scatterplot only fits one variable on the X axis, but the formula is easy to write: 
 
 $$Y_i \approx \beta_0 + \beta_1 X_{i1} + \beta_2 X_{i2}+ \beta_3 X_{i3}$$
 .
-
-### Variable selection
 
 Today, we ask: which parts of $X$ should we use and which should we ignore? If the estimated value for $\beta_2$ is small, should we set it to 0 and continue as if $X_{i2}$ has no association with $Y_{i}$? This problem is called "variable selection" or "subset selection". 
 
@@ -47,14 +47,14 @@ Countless papers, several books, and probably hundreds of computer programs have
 - Inference means we want to learn something about the internal mechanisms of the system under study. 
 - Prediction means we don't care if the internals are right or wrong: if someone gives us a new value of $X$, we just want to guess $Y$ accurately. 
 
-Algorithms or decision rules that are optimized for one of these goals will often fall short of the other goal. In some cases, it is guaranteed that no algorithm can perform optimally at both prediction and inference. [Here](https://academic.oup.com/biomet/article-abstract/92/4/937/389439) is one highly technical way of mathematically proving that the prediction-inference tradeoff cannot be avoided. Today, we will demonstrate a similar tradeoff through simulation in R.
+Algorithms or decision rules that are optimized for one of these goals will often fall short of the other goal. In some cases, it is guaranteed that no algorithm can perform optimally at both prediction and inference. [Here](https://academic.oup.com/biomet/article-abstract/92/4/937/389439) is one very technical way of mathematically proving that the prediction-inference tradeoff cannot be avoided. Today, we will demonstrate a similar tradeoff through simulation in R.
 
 #### Simulated data
 
 Today's demo centers around a dataset generated like this:
 
 - $X_1$ contains the numbers from 1 to 10, with each number occuring 5 times (total length: 50). They are in a random order. 
-- $X_2$ and $X_3$ are generated the same way as $X_1$, but the order is different (and statistically independent).
+- $X_2$ and $X_3$ are generated the same way as $X_1$, but the order is different (all three are statistically independent).
 - $\epsilon$ is distributed as $Binomial(0.5, 10)$.
 - $Y_i = 1.1*X_{1,i} + 0.1*X_{2,i} + 0*X_{3,i} + \epsilon_i$.
 
@@ -85,7 +85,7 @@ To achieve this, we need the concept of a *sampling distribution*. Estimates of 
 
 $$\hat \beta_3 = f(X_1, X_2, X_3, Y, \epsilon, \beta)$$
 
-. If you take typical college classes in linear algebra and probabilty & statistics, you will easily learn what $f$ is and where $f$ comes from. Since this class is about "why", not "how", let's assume someone else has done the math and figure out how to use it.
+. If you take typical college classes in linear algebra and probabilty & statistics, you can learn what $f$ is and where $f$ comes from. Since this class is about "why", not "how", let's assume someone else has done the math and figure out how to use it.
 
 Functions of random variables are also random variables, so $\hat \beta_3$ is itself a random variable. It follows some mathematical law, which we call its *sampling distribution.* It has an expectation, a variance, and a probability mass function. All of them can be computed and evaluated (at least approximately) via existing software. 
 
@@ -119,17 +119,15 @@ You don't have to read these. But you can if you want.
 
 #### P-values
 
-A p-value is a probability. The event that this probability describes is a little complicated. Suppose you do an analysis and observe an estimate $\hat \beta_3$. Suppose you were to re-do the entire study, obtaining a new dataset in the exact same way as the first. The p-value associated with $\hat \beta_3$ is the probability of observing a result more extreme than $\hat \beta_3$ upon redoing the study. 
+A p-value is a probability. The event that this probability describes is a little complicated. Suppose you do an analysis and observe an estimate $\hat \beta_3$. Suppose you were to re-do the entire study, obtaining a new dataset in the exact same way as the first. The p-value associated with $\hat \beta_3$ is the probability of observing a result more extreme than $\hat \beta_3$ upon redoing the study. This probability is defined and calculated only under a strong assumption called a "null hypothesis", to be explained below. 
 
-"More extreme" can be measured in different ways, and when you report a p-value, you need to explain how you measured extremeness. If all else remains the same, the p-value is always decreasing with the measure of extremeness: for instance, as $|\beta_3|$ increases, the p-value decreases.
+"More extreme" can be measured in different ways, and when you report a p-value, you need to explain how you measured extremeness. If you hear people talking about "one-tailed" and "two-tailed" tests, they are measuring extremeness in different ways. If all else remains the same, the p-value is always decreasing with the measure of extremeness.
 
-P-values assume a certain "null hypothesis": the same probability calculation cannot apply both when the true value $\beta_3$ is 0 and when $\beta_3$ is 10,000. That's okay because there are no false positives when $\beta_3$ is 10,000: only true positives. 
+P-values assume a certain "null hypothesis". The same probability calculations cannot apply both when the true value $\beta_3$ is 0 and when $\beta_3$ is 10,000, and in this lecture, the null hypothesis is that the coefficient being tested equals 0. 
 
-In probability and statistics, we are accustomed to probabilities describing random variables, but being fixed themselves. For a Binomial random variable with success probability 0.5, the outcome is random, but the 0.5 is fixed. P-values break this dichotomy: they are stated as probabilities, but they are also outcomes of a random experiment. This can be very confusing. It may be easier at times to retreat from p-values and consider only sampling distributions of more tangible quantities, like $\beta_3$. Often, you can still get the job done. 
+In probability and statistics, we are accustomed to probabilities describing random variables, but being fixed themselves. For a Binomial random variable with success probability 0.5, the outcome is random, but the 0.5 is fixed. P-values break this dichotomy: they are stated as probabilities, but they are also outcomes of a random experiment. This can be very confusing. It may be easier at times to retreat from p-values and consider only sampling distributions of more tangible quantities, like $\beta_3$. Often, you can still get the job done without using p-values at all. 
 
 ### Prediction and inference within a single research problem
 
-The "prediction versus inference" debate can become more complicated when you use a predictive model as a component of a downstream inference method. You might want to test whether the gene ZBTB4 contributes to younger age at onset of Alzheimer's disease. To reduce randomness in age at onset, you might first subtract out variation due to known causes, like biological sex or the gene APOE4. For testing ZBTB4, the objective is inference, but when modeling known causes, you do not need inferences. You need the best possible predictions. Sometimes you need to add complexity to a *predictive* model in order to achieve the best possible *inferences* further downstream. 
-
-(This example is from a [2018 paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5902667/) I contributed to in the [lab of Elizabeth Blue](https://www.biostat.washington.edu/people/elizabeth-blue) at the University of Washington.)
+The "prediction versus inference" debate can become more complicated when you use a predictive model as a component of a downstream inference method. You might want to test whether the gene ZBTB4 contributes to younger age at onset of Alzheimer's disease. To reduce randomness in age at onset, you might first subtract out variation due to known causes, like biological sex or the gene APOE4. For testing ZBTB4, the objective is inference, but when modeling known causes, you do not need inferences. You need the best possible predictions. Sometimes you need to add complexity to a *predictive* model in order to achieve the best possible *inferences* further downstream. (This example is from a [2018 paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5902667/) I contributed to in the [lab of Elizabeth Blue](https://www.biostat.washington.edu/people/elizabeth-blue) at the University of Washington.)
 
