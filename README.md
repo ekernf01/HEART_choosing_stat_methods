@@ -1,6 +1,6 @@
 ## Choosing statistical methods
 
-This is a light 1hr/week undergraduate class designed for JHU's [HEART](https://engineering.jhu.edu/education/undergraduate-studies/heart-courses/).
+This is a light, fun 1hr/week undergraduate class designed for JHU's [HEART](https://engineering.jhu.edu/education/undergraduate-studies/heart-courses/).
 
 The class is not quite ready for public consumption -- check back here soon for a Fall 2022 *syllabus*, which is the authoritative source of information about all administrative aspects of the class, and for a more transparent layout of the course content.
 
