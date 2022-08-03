@@ -2,7 +2,11 @@
 
 This is a light, fun, 1hr/week undergraduate class designed for JHU's [HEART](https://engineering.jhu.edu/education/undergraduate-studies/heart-courses/).
 
-The class is not quite ready for public consumption -- check back here soon for a Fall 2022 *syllabus*, which is the authoritative source of information about all administrative aspects of the class, and for a more transparent layout of the course content.
+### Accessing files
+
+All administrative info (calendar, grading policy, books/equipment needed) is contained in the syllabus, in the `course_info` folder. All lessons are PDF files in the `course_content` folder. You can click through the links on github to access individual files, or click "code" in the top right to download everything as a zipped folder.
+
+![image](https://user-images.githubusercontent.com/5271803/182508157-dfc34448-5a4f-414c-9acf-6fa5cfaf1472.png)
 
 ### Why?
 
