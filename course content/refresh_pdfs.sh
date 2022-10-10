@@ -5,6 +5,9 @@ for lesson in 1_computing_intro/1_computing_intro \
     5_outlier_robustness/5_outlier_robustness \
     6_be_conservative/6_be_conservative 
 do
-    pandoc -f markdown -t latex ${lesson}.md -o ${lesson}.pdf
+    cd $(dirname -- $lesson)
+    basename=$(basename -- $lesson)
+    pandoc -f markdown -t latex ${basename}.md -o ${basename}.pdf
+    cd ..
 done
 

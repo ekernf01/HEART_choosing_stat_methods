@@ -13,6 +13,8 @@ This aspect of statistics is EXTREMELY heavily studied, and there are some commo
 
 ### Exercises
 
+You can start from the example code `LAST_FIRST_efficiency.R`.
+
 In human genetics, samples often contain people of multiple ancestries, and separating them out can be interesting and useful for anthropology and medical studies. This is usually best done using genetic data themselves. Some methods for doing this attempt to operate in a way that gives equal weight to each locus. (A **locus** is a spot on the genome; the plural of **locus** is **loci**.) In other words, loci with high variance are not supposed to influence the results more than loci with low variance. This example is about estimating genotype variance at some genetic loci, so you can later assign them the right weight. 
 
 To define that more precisely, we need more terms from genetics. At each locus, there can be different DNA sequences from person to person, or different sequences on the two chromosomes within a person. These different sequences are called **alleles**. We will deal with the total number of copies of a reference allele at each locus, which is 0, 1, or 2 for each person. Call this allele count $X$. Then the expected value $E[X]$ is the **population allele frequency**, which is what you would get if you genotyped everybody and averaged the results. 

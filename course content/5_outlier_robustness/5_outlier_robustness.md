@@ -45,6 +45,7 @@ The data for the rest of the session comes from some research I've been working 
 For my research, I needed the production and decay rates separately, not just the total velocity. Let's look at the data to see if there's any way of teasing them apart. Here's a typical gene from this dataset. Each dot represents the values at the final time-point of a separate run of the simulation. There is some randomness purposefully included. We'll look at three quantities: the time the simulation was terminated; the RNA level of gene 7 at that time; and the rate of change of that RNA level.
 
 ![A time-series of RNA levels begins at near-zero expression with little variability and rapidly grows to high expression with high variability around time-point 150.](timeseries_gene7.png)
+
 ![A bivariate display of RNA concentration and RNA velocity shows two parallel lines with negative slope, one at low RNA levels and the other at high RNA levels, plus some wild outliers, which are mostly in-between.](gene7_rna_vs_rna_velocity.png)
 
 A time-series of RNA levels begins at near-zero expression with little variability, and around time-point 150, it rapidly grows to high expression with high variability. A display of RNA concentration and RNA velocity shows two parallel lines with negative slope, one at low RNA levels and the other at high RNA levels, plus some wild outliers, which are mostly in-between.
