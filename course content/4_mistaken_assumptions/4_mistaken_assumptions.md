@@ -31,7 +31,7 @@ Repeat the tasks from the efficiency lecture (copied below) but with assortative
 
     > Method 1 is the R function `var`, which uses the formula $\frac{(X_1 - \bar X)^2 + ... + X_N - \bar X)^2}{N-1}$. It plugs in the sample mean $\bar X$ in place of the population allele frequency $E[X]$, and it averages the squared deviations across each person in the sample. The denominator we'll use is N-1, not N, for reasons beyond the scope of this course. 
 
-    > Method 2 is to compute $\bar X (2-\bar X)/2N$, where $\bar X$ is the sample mean. This method is derived from mathematical properties of the binomial distribution (coin flips). It requires certain assumptions (look up "Hardy-Weinberg equilibrium"), but it is more efficient than method 1.
+    > Method 2 is to compute $\bar X (2-\bar X)/2$, where $\bar X$ is the sample mean. This method is derived from mathematical properties of the binomial distribution (coin flips). It requires certain assumptions (look up "Hardy-Weinberg equilibrium"), but it is more efficient than method 1.
 
 
 3. Using `lapply` or a `for` loop, repeat this 2000 times. To store the results, extend the second dataframe to have 2000 rows and 2 columns.
