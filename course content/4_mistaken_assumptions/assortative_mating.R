@@ -57,3 +57,7 @@ for(f in filenames){
     set_colnames(paste0("Locus", 1:9)) %>% 
     write.csv(f)
 }
+
+# How to read a csv into R as a dataframe
+allele_counts = read.csv("demo1.csv")
+     
