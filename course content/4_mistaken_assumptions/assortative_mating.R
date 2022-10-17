@@ -59,5 +59,7 @@ for(f in filenames){
 }
 
 # How to read a csv into R as a dataframe
+# If you have a local file called "demo.csv"
 allele_counts = read.csv("demo1.csv")
-     
+# If you want to pull it straight from the course website using a URL
+allele_counts = read.csv("https://raw.githubusercontent.com/ekernf01/HEART_choosing_stat_methods/main/course%20content/4_mistaken_assumptions/demo_data/demo1.csv")
