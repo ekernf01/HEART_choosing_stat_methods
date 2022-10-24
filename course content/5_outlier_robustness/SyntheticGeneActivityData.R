@@ -1,5 +1,6 @@
 setwd("~/Desktop/jhu/teaching/HEART choosing statistical methods/4_outlier_robustness/")
-GeneActivity = as.data.frame(t(read.csv("SyntheticGeneActivityData.csv", row.names = 1)))
+data_url = "https://raw.githubusercontent.com/ekernf01/HEART_choosing_stat_methods/main/course%20content/5_outlier_robustness/SyntheticGeneActivityData.csv"
+GeneActivity = as.data.frame(t(read.csv(data_url, row.names = 1)))
 
 {
   png("timeseries_gene7.png", width = 300, height = 300)
