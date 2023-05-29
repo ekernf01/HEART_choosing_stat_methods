@@ -1,3 +1,4 @@
+p = 0.12345
 # Q1
 genotypes = data.frame(allele_count = rbinom(1000, 2, p))
 

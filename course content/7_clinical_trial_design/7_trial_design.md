@@ -5,14 +5,14 @@ You're serving as a statistician at a large academic medical center. A team of d
 - someone else will consider blinding and ethics. 
 - The primary endpoint will be "Did the patient EITHER die OR stay hospitalized for over 20 days?" 
 - All patients will be allocated to treatment or control with 50% probability. 
-- All study participants are statistically independent: there are no phenomena such as virus variants or overflowed hospitals that might affect many study participants at once. (If you want to be able to handle those, take some classes in linear algebra, intro stat, and "hierarchical modeling" or "advanced regression methods".)
+- All study participants are statistically independent: there are no phenomena such as virus variants or overflowed hospitals that might affect many study participants at once. 
 
 The basic framework we'll use for analysis is called logistic regression. Logistic regression assumes the data come from a model like this.
 
 - $x_1=0$ if patient assigned to Ivernectin, otherwise $x_1=1$
 - $x_2=0$ if patient hormonally female upon admission, $x_2=0$ if patient hormonally male. (I chose to use hormones over gender identity or biological sex in this example because I expect the biggest effects on covid-19 severity to result from hormonal effects on the immune system.)
 - $x_3$ is the patient's age
-- $z = \beta_0 + \beta_1*x_1 + ... \beta_2*x_2$. The $\beta$'s are unknown measures of effect size. They will be learned by a piece of software to be introduced in the example code. $z$ is different for each patient and it's a measure of risk ranging from $-\infty$ to $\infty$. 
+- $z = \beta_0 + \beta_1*x_1 + ... \beta_2*x_2$. The $\beta$'s are unknown measures of effect size. They will be estimated by a piece of software, which will be introduced in the example code. $z$ is different for each patient and it's a measure of risk ranging from $-\infty$ to $\infty$. 
 - $p = \sigma(z)$ where $p$ is the probability that the patient will die or stay in the hospital more than 20 days and $\sigma$ is a "sigmoid" function that squashes continuous scores into [0,1]. Specifically, $\sigma(z) = \frac{1}{1 + \exp(-z)}$.
 - $y = Bernoulli(p)$ is a coin-flip converting the probability into the outcome. (A Bernoulli distribution is just a Binomial distribution with $n=1$.)
 
