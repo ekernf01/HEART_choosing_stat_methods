@@ -4,7 +4,6 @@ This is a light, fun, 1hr/week undergraduate class designed for JHU's [HEART](ht
 
 ### Accessing information
 
-- Eric is still finishing up a biotech co-op in Boston, so the first (~~two meetings~~ UPDATE: just the first meeting) are via zoom ([link](https://jhubluejays.zoom.us/j/97300731345?pwd=MUVPM3MyYjF3aFNIUDA0SGJsN0VFUT09)).
 - All administrative info (meeting times, calendar, grading policy, books/equipment needed) is contained in the syllabus, in the `course_info` folder ([download](https://github.com/ekernf01/HEART_choosing_stat_methods/raw/main/course%20info/syllabus.odt)). 
 - All lessons are PDF files in the `course_content` folder. You can click through the links on github to access individual files, or click "code" in the top right to download everything as a zipped folder.
 
