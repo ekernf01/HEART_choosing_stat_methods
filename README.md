@@ -1,6 +1,6 @@
 ## Choosing statistical methods
 
-This is a light, fun, 1hr/week undergraduate class designed for JHU's [HEART](https://engineering.jhu.edu/education/undergraduate-studies/heart-courses/).
+This is a light, fun, 75min/week undergraduate class designed for JHU's [HEART](https://engineering.jhu.edu/education/undergraduate-studies/heart-courses/).
 
 ### Accessing information
 
