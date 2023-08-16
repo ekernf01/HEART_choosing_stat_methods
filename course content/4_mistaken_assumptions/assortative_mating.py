@@ -45,5 +45,5 @@ for i, filename in enumerate(filenames):
 # If you have a local file called "demo.csv"
 allele_counts = pd.read_csv("demo1.csv")
 # If you want to pull it straight from the course website using a URL
-allele_counts = pd.read_csv("https://raw.githubusercontent.com/ekernf01/HEART
+allele_counts = pd.read_csv("https://raw.githubusercontent.com/ekernf01/HEART_choosing_stat_methods/main/course%20content/4_mistaken_assumptions/demo_data/demo1.csv")
 

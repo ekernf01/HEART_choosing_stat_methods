@@ -1,6 +1,6 @@
 ### Grading
 
-**For Fall 2022 at JHU, this document does not apply -- it's pass/fail. See the syllabus for grading info.**
+**For Fall 2023 at JHU, this document does not apply -- it's pass/fail. See the syllabus for grading info.**
 
 Grades in this class seek to describing you your readiness to engage in computer-aided critical thinking about statistical problems, as of the end of the class. Specific assignments will be accompanied by binary rubrics. Scores will be aggregated and discretized *ad hoc* in order to reflect the descriptions below.
 

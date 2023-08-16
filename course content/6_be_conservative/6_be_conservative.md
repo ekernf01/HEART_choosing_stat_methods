@@ -1,53 +1,51 @@
 ## Being conservative 
 
-When the exact right answer cannot be reliably determined from a dataset, you need to make a choice about what types of errors are most harmful. You often want to be conservative in some sense, but that can take different forms. In particular: 
+When the exact right answer cannot be determined from a dataset, you need to make a choice about what types of errors are most harmful. You often want to be conservative in some sense, but that can take different forms. In particular: 
 
 - You might want to declare that an effect exists only if there is strong evidence for it. 
 - You may want to allow for its existence even if the evidence is not very strong. 
 
-In at least one very common domain, there are fundamental tradeoffs at play so that you cannot do both. Today, we will get into some of the details and see a version of this tradeoff in action.
+You cannot do both of these things. Today, we will get into some of the details and see a version of this tradeoff in action.
 
 ### Learning objectives
 
 - Describe linear regression.
-- Fit linear regression models in R. Use them to extract predictions and control the rate of false positives.
-- Describe two model selection criteria -- hypothesis testing and cross-validation. Explain the differences between them in terms of end goals and in terms of typical outcomes. Implement them in R to demonstrate the differences in their results. 
+- Fit linear regression models in python. Use them to extract predictions and control the rate of false positives.
+- Describe two model selection criteria -- hypothesis testing and cross-validation. 
+    - Explain the differences between them in terms of end goals and in terms of typical outcomes. 
+    - Implement them in python to demonstrate the differences in their results. 
 
 ### Linear regression 
 
-In order to have enough context to continue on this topic, I need to take a detour and discuss *linear regression*. You saw linear regression in the session on outliers. We used it to try to capture the line in this plot, and we tried to modify it to ignore outliers. 
-
-![The chart showing RNA levels (x axis) versus RNA velocity (y axis) for gene 7 from the outliers session.](gene7_rna_vs_rna_velocity.png)
-
-Linear regression just means fitting a line to a set of data on an X-Y scatterplot. If $Y \approx \beta_0 + \beta_1 X$, the task is to choose the slope $\beta_1$ and the y-intercept $\beta_0$. 
+Linear regression means fitting a line to a set of data on an X-Y scatterplot. If $Y \approx \beta_0 + \beta_1 X$, the task is to choose the slope $\beta_1$ and the y-intercept $\beta_0$. 
 
 ![From the Wikipedia article on linear regression. Public domain; by Oleg Alexandrov.](220px-Linear_least_squares_example2.png)
 
-Today we will carry out linear regression use a built-in function in R called `lm`. `lm` chooses coefficients by minimizing the sum of squared errors:
+You saw linear regression in the session on outliers. We used it to try to capture the line in this plot, and we tried to modify it to ignore outliers. 
+
+![The chart showing RNA levels (x axis) versus RNA velocity (y axis) for gene 7 from the outliers session.](gene7_rna_vs_rna_velocity.png)
+
+Today we will carry out linear regression using built-in functions in third-party Python packages. These functions choose coefficients by minimizing the sum of squared errors:
 
 $$(Y_1 - \beta_0 + \beta_1 X_1)^2 + ... + (Y_N - \beta_0 + \beta_1 X_N)^2$$
     
-.  This is the sum of the squares of the lengths of the *vertical green lines* in the picture.
-
-I anticipate that this formula will raise some questions, but the main point of this session has not yet arrived, so let me anticipate two questions and discuss only briefly before continuing. First, it's great that `lm` can minimize the sum of squared errors, but how? For better or worse, this class is about not "How?" but "Why?", so I decline to discuss this. One good way to learn how `lm` works is to take a class in linear algebra, and towards the end, ask about the QR matrix decomposition. 
-
-Second, why use the sum of squared errors, and not some other "goodness of fit" measure? We are using it for the class because it is one of the simplest things to do, both in terms of mathematical analysis and algorithmic implementation. But much of the time, the sum of squared errors is not the best thing to minimize -- for example, the sum of squares will be very sensitive to outliers. There are many other options, and to learn about them, you could look for classes in regression methods, generalized linear models, or supervised machine learning. One very useful mathematical finding is the [Gauss-Markov Theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem). It describes limited circumstances when minimizing the sum of squares is the best possible choice.
+.  This is the sum of the squares of the lengths of the *vertical green lines* in the first picture.
 
 ### Variable selection
 
-Linear regression is often done using more than one $X$ value for each observation. In those cases, it is harder to picture because the XY scatterplot only fits one variable on the X axis, but the formula is easy to write: 
+Linear regression is often done using more than one $X$ value for each observation. In those cases, it is harder to picture because the XY scatterplot only fits one variable on the X axis, but the formula is still easy to write: 
 
 $$Y_i \approx \beta_0 + \beta_1 X_{i1} + \beta_2 X_{i2}+ \beta_3 X_{i3}$$
 .
 
-Today, we ask: which parts of $X$ should we use and which should we ignore? If the estimated value for $\beta_2$ is small, should we set it to 0 and continue as if $X_{i2}$ has no association with $Y_{i}$? This problem is called "variable selection" or "subset selection". 
+Today, we ask: which parts of $X$ should we use and which should we ignore? If the estimated value for $\beta_2$ is small, should we set it to 0 and continue as if $X_{i2}$ has no association with $Y_{i}$? This type of test appears in nearly every public health study in a context where X is something like **"cigarettes per day"** and Y is something like **"age at onset of lung cancer"**. 
 
-Countless papers, several books, and probably hundreds of computer programs have been written on this question, and different methods get different answers. Sometimes, one method is just better than another, but often, the difference is not about performance but rather priorities. In particular, these methods may prioritize either *prediction* or *inference*. 
+This problem is called "variable selection" or "subset selection". Countless papers, several books, and probably hundreds of computer programs have been written on this question, and different methods get different answers. Sometimes, one method is just better than another, but often, the difference is not about performance but rather priorities. In particular, these methods may prioritize either *prediction* or *inference*. 
 
-- Inference means we want to learn something about the internal mechanisms of the system under study. 
-- Prediction means we don't care if the internals are right or wrong: if someone gives us a new value of $X$, we just want to guess $Y$ accurately. 
+- Inference means we want to learn something about the internal mechanisms of the system under study: *does smoking cause cancer?*
+- Prediction means we don't care if the internals are right or wrong: if someone gives us a new value of $X$, we just want to guess $Y$: *is this patient at high risk of cancer?*
 
-Algorithms or decision rules that are optimized for one of these goals will often fall short of the other goal. In some cases, it is guaranteed that no algorithm can perform optimally at both prediction and inference. [Here](https://academic.oup.com/biomet/article-abstract/92/4/937/389439) is one very technical way of mathematically proving that the prediction-inference tradeoff cannot be avoided. Today, we will demonstrate a similar tradeoff through simulation in R.
+Algorithms or decision rules that are optimized for one of these goals will often fall short of the other goal. In some cases, it is guaranteed that no algorithm can perform optimally at both prediction and inference. [Here](https://academic.oup.com/biomet/article-abstract/92/4/937/389439) is one very technical way of mathematically proving that the prediction-inference tradeoff cannot be avoided. Today, we will demonstrate a similar tradeoff through simulation in Python.
 
 #### Simulated data
 
@@ -56,7 +54,7 @@ Today's demo centers around a dataset generated like this:
 - $X_1$ contains the numbers from 1 to 10, with each number occuring 5 times (total length: 50). They are in a random order. 
 - $X_2$ and $X_3$ are generated the same way as $X_1$, but the order is different (all three are statistically independent).
 - $\epsilon$ is distributed as $Binomial(0.5, 10)$.
-- $Y_i = 1.1*X_{1,i} + 0.1*X_{2,i} + 0*X_{3,i} + \epsilon_i$.
+- $Y_i = 11*X_{1,i} + 1*X_{2,i} + 0*X_{3,i} + \epsilon_i$.
 
 So, in truth, $Y$ depends on $X_1$ and $X_2$, but not $X_3$. We will act as if we don't know which of the $X$'s is relevant, and we will consider models that include different combinations of $X$'s.
 
@@ -75,7 +73,7 @@ This is a simple method.
 
 #### Leave-one-out cross-validation
 
-This works much like predictive error. You can follow almost the same steps. The key difference is to *fit* the model and *evaluate* the model on separate subsets of data. You'll fit each model on 49 data points and evaluate on the 50th. You'll repeat this for all 50 data points and average the results. This is demonstrated in the code. 
+This works much like the last method. You can follow almost the same steps. The key difference is to *fit* the model and *evaluate* the model on separate subsets of data. You'll fit each model on 49 data points and evaluate on the 50th. You'll repeat this for all 50 data points and average the results. This is demonstrated in the example code. 
 
 #### Hypothesis testing
 
@@ -93,9 +91,9 @@ This software provides a very simple procedure. It will output a number called a
 
 ### Exercises
 
-After doing the exercises below, send your results and your R code by email as `LAST_FIRST_regression.docx` and `LAST_FIRST_regression.R`. 
+Attempt the exercises below and send your results and your code by email as a Python notebook or an HTML file.
 
-Starting from the [linear regression demo](https://github.com/ekernf01/HEART_choosing_stat_methods/blob/main/course%20content/6_be_conservative/linear_regression_demo.R): 
+Starting from the [linear regression demo](https://github.com/ekernf01/HEART_choosing_stat_methods/blob/main/course%20content/6_be_conservative/linear_regression_demo.py): 
 
 1. Compare these three models:   
     - $Y \approx \beta_1*X_1$,
