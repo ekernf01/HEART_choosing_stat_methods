@@ -31,8 +31,8 @@ There are two ways to learn computer programming. You can read books or guides t
 
 At the end of class, email me your Python notebook in `html` or `ipynb` file format. In the email, include a couple sentences describing how today's lesson went.
 
-1. It's easiest to use Python within a dedicated code editor. My recommendations are Google Colaboratory (quicker startup) or Visual Studio Code (good for the long term). Go to [https://colab.research.google.com/](https://colab.research.google.com/) and create a new notebook. 
-2. Create a variable `my_integer` storing a whole number. Check its `type` and test out arithmetic operations on it.
+-  It's easiest to use Python within a dedicated code editor. My recommendations are Google Colaboratory (quicker startup) or Visual Studio Code (good for the long term). Go to [https://colab.research.google.com/](https://colab.research.google.com/) and create a new notebook. 
+-  Create a variable `my_integer` storing a whole number. Check its `type` and test out arithmetic operations on it.
 
         my_int = 42
         print(my_int)
@@ -40,7 +40,7 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
         print(my_int + 2)
         print(my_int / 5)
 
-3. Create a variable `my_float` storing a decimal. Check its `type` and test out arithmetic operations on it. (See also: [Julia Evans](https://jvns.ca/blog/2023/01/13/examples-of-floating-point-problems/#how-does-floating-point-work) on floating point numbers).
+-  Create a variable `my_float` storing a decimal. Check its `type` and test out arithmetic operations on it. (See also: [Julia Evans](https://jvns.ca/blog/2023/01/13/examples-of-floating-point-problems/#how-does-floating-point-work) on floating point numbers).
 
         my_float = 3.14159
         print(my_float)
@@ -48,7 +48,7 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
         print(my_float - 2)
         print(my_float * 5)
 
-4. Create a variable `my_str` storing a word (aka a "string"). Check its `type` and test out arithmetic operations on it. 
+-  Create a variable `my_str` storing a word (aka a "string"). Check its `type` and test out arithmetic operations on it. 
 
         my_str = "banana"
         print(my_str)
@@ -58,11 +58,15 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
         print(my_str[0:2])
         print(my_str.split("a"))
 
-5. Variables can be named almost anything and can contain almost any value. They are not enclosed in quotes. To express specific strings like `"banana"`, you add quotes. These are called literals and they must be taken at face value. This code won't run because it uses an undefined variable, `banana`, instead of a literal, `"banana"`. 
+-  Variables can be named almost anything and can contain almost any value. They are not enclosed in quotes. To express specific strings like `"banana"`, you add quotes. These are called literals and they must be taken at face value. This code won't run because it uses an undefined variable, `banana`, instead of a literal, `"banana"`. 
 
-        my_str = banana 
+        my_str = banana
+        
+- This code won't run because it tries to store a value in a literal `"banana"`, instead of a variable, `banana`. 
 
-6. Lists are the most basic container in Python, capable of storing a collection of values and retrieving them based on their distance from the start (starting at 0). 
+        "banana" = 6 
+
+- Lists are the most basic container in Python, capable of storing a collection of values and retrieving them based on their distance from the start (starting at 0). 
 
         my_list = [42, 3.1419, "banana"]
         print(my_list)
@@ -73,12 +77,12 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
         print(my_list * 2)
         print(my_list + my_list)
 
-7. To repeat an operation and produce a list of results, there is a pithy, expressive idea called a "list comprehension."
+- To repeat an operation and produce a list of results, there is a pithy, expressive idea called a "list comprehension."
 
         print([type(element) for element in my_list])
         print([i*i*i for i in range(10)])
 
-8. You can also use a loop and collect the results in a new list.
+- You can also use a loop and collect the results in a new list.
 
         my_list_doubled = []
         for element in my_list:
@@ -86,19 +90,19 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
             my_list_doubled.append(element)
         print(my_list_doubled)
 
-9. A `dict` is like a list, but instead of being ordered, it is named.
+- A `dict` is like a list, but instead of being ordered, it is named.
 
         example_dict = { "int": 42, "float": 3.14, "string": "banana", "list": [i for i in range(3)] }
         print(example_dict)
         print(example_dict["float"])
 
-10. A dataframe is a rectangular array similar to an Excel sheet. Dataframes are not built into python but are implemented in third-party packages. Two of the most common implementations are "pandas" and "polars". You can make a pandas dataframe from a dict containing lists. 
+- A dataframe is a rectangular array similar to an Excel sheet. Dataframes are not built into python but are implemented in third-party packages. Two of the most common implementations are "pandas" and "polars". You can make a pandas dataframe from a dict containing lists. 
 
         import pandas as pd
         my_df = pd.DataFrame({"make": ["honda", "toyota", "ford"], "model": ["civic", "prius", "explorer"], "mpg": [35, 50, 25]}, index = ["a", "b", "c"])
         print(my_df)
 
-11. Accessing and modifying Pandas dataframe elements can be done using numbers (like a list) or names (like a dict).
+- Accessing and modifying Pandas dataframe elements can be done using numbers (like a list) or names (like a dict).
 
         print(my_df.columns)
         print(my_df.iloc[0,0])
@@ -106,7 +110,7 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
         my_df.iloc[2,2] = -999
         print(my_df)
 
-12. To re-use your code easily, define a function.
+- To re-use your code easily, define a function.
 
         def compute_standard_deviation(some_numbers):
             sum = 0
