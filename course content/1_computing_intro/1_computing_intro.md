@@ -96,7 +96,7 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
         print(example_dict)
         print(example_dict["float"])
 
-- To re-use your code easily, define a function.
+- To re-use your code easily, define a function. This is a way to plan out operations on an arbitrary input -- in this case, a list of numbers. You can plan them out without knowing the length of the list or its contents. Then you can easily run them later on any list.
 
         def compute_standard_deviation(some_numbers):
             sum = 0
