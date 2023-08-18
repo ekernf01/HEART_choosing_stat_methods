@@ -7,7 +7,7 @@ Today in class you will test-drive a programming language called "Python". The g
 - Understand, create, and modify common Python variable types: `int`, `float`, `str`, `list`, `set`, `dict`
 - Understand, create, and modify "dataframes"
 - Encapsulate Python code using "functions"
-- Test your functions.
+- Import functions and data types from packages written by other people.
 - Repeatedly apply Python code using "loops" and "list comprehensions".
 
 You may also use R for this class if you know it already but we will only be teaching Python. 
@@ -96,20 +96,6 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
         print(example_dict)
         print(example_dict["float"])
 
-- A dataframe is a rectangular array similar to an Excel sheet. Dataframes are not built into python but are implemented in third-party packages. Two of the most common implementations are "pandas" and "polars". You can make a pandas dataframe from a dict containing lists. 
-
-        import pandas as pd
-        my_df = pd.DataFrame({"make": ["honda", "toyota", "ford"], "model": ["civic", "prius", "explorer"], "mpg": [35, 50, 25]}, index = ["a", "b", "c"])
-        print(my_df)
-
-- Accessing and modifying Pandas dataframe elements can be done using numbers (like a list) or names (like a dict).
-
-        print(my_df.columns)
-        print(my_df.iloc[0,0])
-        print(my_df.loc["a", "make"])
-        my_df.iloc[2,2] = -999
-        print(my_df)
-
 - To re-use your code easily, define a function.
 
         def compute_standard_deviation(some_numbers):
@@ -125,3 +111,22 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
             
         print(compute_standard_deviation([1,2,3]))
         print(compute_standard_deviation([1,3,5]))
+
+- You can use data types and functions defined by other people by installing packages. Installation is an ugly process and you are not expected to independently install packages for this class -- ask the instructor for help. But, once packages are installed, you will need to know how to use them. You can use them via the keyword `import`, then by using `package.thing_from_package` . For example, the [adventure package](https://pypi.org/project/adventure/) implements a text-based game. 
+
+        import adventure
+        adventure.play() 
+
+- A dataframe is a rectangular array similar to an Excel sheet. Dataframes are not built into python but are implemented in third-party packages. Two of the most common implementations are "pandas" and "polars". We will use pandas in this class. You can make a pandas dataframe from a dict containing lists as follows. 
+
+        import pandas as pd
+        my_df = pd.DataFrame({"make": ["honda", "toyota", "ford"], "model": ["civic", "prius", "explorer"], "mpg": [35, 50, 25]}, index = ["a", "b", "c"])
+        print(my_df)
+
+- Accessing and modifying Pandas dataframe elements can be done using numbers (like a list) or names (like a dict).
+
+        print(my_df.columns)
+        print(my_df.iloc[0,0])
+        print(my_df.loc["a", "make"])
+        my_df.iloc[2,2] = -999
+        print(my_df)
