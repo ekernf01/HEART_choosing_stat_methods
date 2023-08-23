@@ -7,7 +7,7 @@ Today in class you will test-drive a programming language called "Python". The g
 - Understand, create, and modify common Python variable types: `int`, `float`, `str`, `list`, `set`, `dict`
 - Understand, create, and modify "dataframes"
 - Encapsulate Python code using "functions"
-- Import functions and data types from packages written by other people.
+- "Import" functions and data types from packages written by other people.
 - Repeatedly apply Python code using "loops" and "list comprehensions".
 
 You may also use R for this class if you know it already but we will only be teaching Python. 
@@ -96,7 +96,7 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
         print(example_dict)
         print(example_dict["float"])
 
-- To re-use your code easily, define a function. This is a way to plan out operations on an arbitrary input -- in this case, a list of numbers. You can plan them out without knowing the length of the list or its contents. Then you can easily run them later on any list.
+- To re-use your code easily, define a function. This is a way to plan out operations on an arbitrary input -- in this case, a list of numbers. You can plan them out without knowing the length of the list or its contents. Then you can easily run them later on any list. The single worst piece of computer science jargon refers to this situation: when we say "I'm going to *call* a function," we mean we will *invoke* it or *apply* it or *use* it or *run* it, not that we will "summon it" or "give it a name."
 
         def compute_standard_deviation(some_numbers):
             sum = 0
