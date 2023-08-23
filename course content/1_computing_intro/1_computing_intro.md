@@ -123,10 +123,13 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
         my_df = pd.DataFrame({"make": ["honda", "toyota", "ford"], "model": ["civic", "prius", "explorer"], "mpg": [35, 50, 25]}, index = ["a", "b", "c"])
         print(my_df)
 
-- Accessing and modifying Pandas dataframe elements can be done using numbers (like a list) or names (like a dict).
+- Accessing and modifying Pandas dataframe elements can be done using numbers (like a list) or names (like a dict). The syntax looks like `df.loc[row_names, column_names]` or `df.iloc[row_numbers, column_numbers]`. You can read an existing value, or assign a new value. You can use `:` as shorthand for "everything".  
 
-        print(my_df.columns)
-        print(my_df.iloc[0,0])
-        print(my_df.loc["a", "make"])
-        my_df.iloc[2,2] = -999
-        print(my_df)
+        print(my_df.index) #row names 
+        print(my_df.columns) #column names
+        print(my_df.iloc[0,0]) #top left entry
+        print(my_df.loc["a", "make"]) #top left entry again
+        print(my_df.loc["a", :]) # top row
+        print(my_df.loc[:, "make"]) # left column
+        my_df.iloc[2,2] = -999 #Assign a new value to bottom right
+        print(my_df) # Check to see the new value in bottom right
