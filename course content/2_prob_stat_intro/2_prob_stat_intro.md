@@ -12,12 +12,13 @@ This course will consider mathematical questions and empirical questions, as wel
 
 ### Learning objectives
 
-- Describe binomial random variables.
-- Define probability mass functions. Write them out for binomial random variables. 
-- Define expected value $E[X]$ and variance $Var[X]$ of a random variable $X$. 
-- Define independence for random variables. Describe pairs of random variables that are independent or not.
-- Calculate expected value and variance of a binomial random variable in two different ways.
-- Describe the difference between a parameter and an estimate of that parameter.
+- Describe binomial random variables
+- Define "probability mass function" 
+- Define the "expected value" E[X] and "variance" Var[X] of a random variable X 
+- Describe when E[X+Y] = E[X] + E[Y] and when Var[X+Y] = Var[X] + Var[Y]
+- Calculate expected value and variance of a binomial random variable from the addition rules above
+- Define independence for random variables
+- Describe pairs of random variables that are independent or not
 
 ### Background
 
