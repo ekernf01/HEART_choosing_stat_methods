@@ -49,15 +49,4 @@ Type your answers in a Word document or similar and your code in a Python script
 1. If the coin is weighted to have a 1/3 chance of landing heads, and you flip it twice, then what is the PMF of the total number of heads? The expectation? The variance? 
 2. Suppose the coins we flip follow a "herd mentality". The second coin decides what to do based on the first coin. If it sees the first land heads, it will also land heads. If it sees the first land tails, it will land tails. How does the table above change? What is the expected value? The variance? 
 3. Write a function in Python to compute the expected value and variance of a binomial random variable given the number of trials and the success probability. Use the definitions, even if you are aware of a more convenient method. You may use the built-in function for the PMF, [available from](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binom.html) a third-party package called scipy. Write out problem 1 as a test case to ensure your code is correct. 
-4. Draw 10,000 independent binomial random variables, each with 25 trials and success probability $0.12345$. You can use the scipy to generate random samples. Estimate the mean and variance of the results from your samples. You can use the built-in functions `mean` and `var`. Also compute the mean and variance from your code for the previous question. Are the estimates close to what your code would predict?
-
-### Mathematical enrichment
-
-5. You can represent a binomial random variable as a sum of independent random variables, each of which is mathematically simple on its own. This leads to simple, efficient formulas for the mean and variance that work for any $p$ and $n$. Figure out how to do this. Report your thought process and your results in terms of $p$ and $n$. (For instance, this is wrong but the format is correct: $E[X] = n^2/p^2$.) Use the properties $E[X + Y] = E[X] + E[Y]$ and $Var[X + Y] = Var[X] + Var[Y]$. This could be disorienting. If you can't get started, we can provide a scaffold to structure your calculations.
-6. Above, you used scipy to compute the PMF. It would be nice to know how that works. What is the PMF of a binomial random variable with success probability $p$ over $n$ independent trials? Look it up on Wikipedia or a reference of your choice. Explain why each component of the formula is present and what would happen if you left each part out.
-
-
-
-
-
-
+4. Draw 10,000 independent binomial random variables, each with 25 trials and success probability $0.12345$. You can use scipy to generate random samples like this: [scipy.stats.binom(n,p).rvs(5)](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.binom.html). Estimate the mean and variance of the results from your samples. You can use a pre-built [mean](https://numpy.org/doc/stable/reference/generated/numpy.mean.html) and [variance](https://numpy.org/doc/stable/reference/generated/numpy.var.html) functions from numpy. Also compute the mean and variance from your code for the previous question. Are the estimates close to what your code would predict?
