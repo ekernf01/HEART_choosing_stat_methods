@@ -2,7 +2,7 @@
 
 *This document got screen-shared and it served as the "chalk board" during our second class.*
 
-- Independence: $P(E_1 \:\mathrm{ and }\: E_2) = P(E_1)P(E_2)$
+- Independence: $P(E_1 \mathrm{ and } E_2) = P(E_1)P(E_2)$
 - Probability mass function of an RV $X$ takes possible values as inputs and produces probabilities as outputs. 
 
     $f_X(x)$ = probability that X=x
