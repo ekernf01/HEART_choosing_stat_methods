@@ -25,15 +25,15 @@ In human genetics, samples often contain people of multiple ancestries, and sepa
 
 To define that more precisely, we need more terms from genetics. At each locus, there can be different DNA sequences from person to person, or different sequences on the two chromosomes within a person. These different sequences are called **alleles**. We will deal with the total number of copies of a reference allele at each locus, which is 0, 1, or 2 for each person. Call this allele count $X$. Then the expected value $E[X]$ is the **population allele frequency**, which is what you would get if you genotyped everybody and averaged the results. 
 
-This lecture deals with the variance, defined as $Var[X] = E[(X - E[X])^2]$. In this demo, you will compare two existing methods for estimating variance.
+This lecture deals with the variance, defined as $Var[X] = \sum_x (x - E[X])^2 f_X(x)$ where $f_X(x)$ is the PMF and $x$ ranges over all possible values of the random variable. In this demo, you will compare two existing methods for estimating variance.
 
-Method 1 is the formula $\frac{(X_1 - \bar X)^2 + ... + X_N - \bar X)^2}{N-1}$, a common default choice for estimating variance. It plugs in the sample mean $\bar X$ in place of the population allele frequency $E[X]$, and it averages the squared deviations across each person in the sample. The denominator we'll use is N-1, not N, for reasons beyond the scope of this course. 
+Method 1 is the formula $\frac{(X_1 - \bar X)^2 + ... + X_N - \bar X)^2}{N-1}$, a common default choice for estimating variance. It plugs in the sample mean $\bar X$ in place of the expected value $E[X]$, and it averages the squared deviations across each person in the sample. The denominator we'll use is N-1, not N, for reasons beyond the scope of this course. 
 
 Method 2 is to compute $\bar X (2-\bar X)/2$, where $\bar X$ is the sample mean. This method is derived from mathematical properties of the binomial distribution. In genetics, it requires certain assumptions (look up "Hardy-Weinberg equilibrium"), but it is more efficient than method 1.
 
 Type your answers in a Word document and your code in a script or notebook and email them to Eric during your end-of-class progress reports.
 
-1. Simulate allele counts for 1 locus in 1000 people using the function scipy to simulate binomial random variables. Store the result in a dataframe. Each person should receive a value of 0, 1, or 2.
+1. Simulate allele counts for 1 locus in 1000 people using scipy to simulate binomial random variables. Store the result in a dataframe. Each person should receive a value of 0, 1, or 2.
 2. Estimate the variance across the 1000 people by method 1 and method 2. Store the results in a separate dataframe with one row and two columns.
 3. Using a list comprehension or a `for` loop, repeat this 2000 times. To store the results, extend the second dataframe to have 2000 rows and 2 columns.
 4. Plot the results as a scatterplot (method 1 vs method 2) and a pair of histograms (method 1 vs method 2). 
