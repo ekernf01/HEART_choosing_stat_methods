@@ -33,7 +33,7 @@ Method 2 is to compute $\bar X (2-\bar X)/2$, where $\bar X$ is the sample mean.
 
 Type your answers in a Word document and your code in a script or notebook and email them to Eric during your end-of-class progress reports.
 
-1. Simulate allele counts for 1 locus in 1000 people using scipy to simulate binomial random variables. Store the result in a dataframe. Each person should receive a value of 0, 1, or 2.
+1. Simulate allele counts for 1 locus in 1000 people using scipy or numpy to simulate binomial random variables. Store the result in a dataframe. Each person should receive a value of 0, 1, or 2.
 2. Estimate the variance across the 1000 people by method 1 and method 2. Store the results in a separate dataframe with one row and two columns.
 3. Using a list comprehension or a `for` loop, repeat this 2000 times. To store the results, extend the second dataframe to have 2000 rows and 2 columns.
 4. Plot the results as a scatterplot (method 1 vs method 2) and a pair of histograms (method 1 vs method 2). 
