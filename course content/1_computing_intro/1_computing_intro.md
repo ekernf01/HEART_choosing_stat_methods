@@ -82,7 +82,7 @@ At the end of class, email me your Python notebook in `html` or `ipynb` file for
         print([type(element) for element in my_list])
         print([i*i*i for i in range(10)])
 
-- You can also use a loop and collect the results in a new list.
+- You can also use a **loop** and collect the results in a new list. The indented code gets repeated with different values of `element`, in the order they appear in `my_list`.
 
         my_list_doubled = []
         for element in my_list:
