@@ -37,6 +37,7 @@ Repeat the tasks from the efficiency lecture (copied below) but with assortative
 3. Using `lapply` or a `for` loop, repeat this 2000 times. To store the results, extend the second dataframe to have 2000 rows and 2 columns.
 4. Which estimation method is closer to the truth on average? Previously, we used the formula for the variance of a binomial random variable, $Np(1-p)$. Since we changed the generating mechanism, this formula is no longer correct. Instead, use the function in the starter script to compute the true variance. 
 5. Each of 9 demo datasets in [this folder](https://github.com/ekernf01/HEART_choosing_stat_methods/blob/main/course%20content/4_mistaken_assumptions/demo_data) contains simulated allele counts for 9 loci across 1000 people. Each sample may or may not have any assortative mating. I don't know which ones do or don't; the decision was made randomly with 50% probability of each. For each dataset, decide which method to use. Explain your decision.
+6. In this folder you can find tomato genotype data obtained from [this package](https://github.com/BioAlgs/GM), and the original source is [Bauchet et al. 2017](doig.org/10.1007/s00122-017-2857-9). It's encoded as 0-0.5-1 instead of 0-1-2. Are these tomato genetic polymorphisms binomially distributed?
 
 ### Footnote
 
