@@ -9,7 +9,7 @@ GeneActivity = pd.read_csv(data_url, index_col=0).T
 
 # Plot timeseries for Gene 7 RNA
 plt.figure(figsize=(5, 5))
-plt.plot(GeneActivity.sum(axis=1), GeneActivity["x_g7"])
+plt.scatter(GeneActivity.sum(axis=1), GeneActivity["x_g7"])
 plt.xlabel("Time (sort of)")
 plt.ylabel("Gene 7 RNA")
 plt.title("A snapshot of many cells")
@@ -18,7 +18,7 @@ plt.close()
 
 # Plot Gene 7 RNA vs. RNA velocity
 plt.figure(figsize=(5, 5))
-plt.plot(GeneActivity["x_g7"], GeneActivity["velocity_x_g7"])
+plt.scatter(GeneActivity["x_g7"], GeneActivity["velocity_x_g7"])
 plt.xlabel("RNA concentration")
 plt.ylabel("RNA velocity")
 plt.title("RNA decay dynamics")
@@ -33,12 +33,12 @@ qr_model = smf.quantreg("velocity_x_g7 ~ x_g7", data=GeneActivity).fit(q=0.5)
 
 # Plot RNA decay dynamics with regression lines
 plt.figure(figsize=(5, 5))
-plt.plot(GeneActivity["x_g7"], GeneActivity["velocity_x_g7"])
+plt.scatter(GeneActivity["x_g7"], GeneActivity["velocity_x_g7"])
 plt.xlabel("RNA concentration")
 plt.ylabel("RNA velocity")
 plt.title("RNA decay dynamics")
-plt.plot(GeneActivity["x_g7"], ls_model.predict(GeneActivity["x_g7"]), color="red", label="Linear Regression")
-plt.plot(GeneActivity["x_g7"], qr_model.predict(GeneActivity["x_g7"]), color="blue", label="Quantile Regression")
+plt.scatter(GeneActivity["x_g7"], ls_model.predict(GeneActivity["x_g7"]), color="red", label="Linear Regression")
+plt.scatter(GeneActivity["x_g7"], qr_model.predict(GeneActivity["x_g7"]), color="blue", label="Quantile Regression")
 plt.legend()
 plt.savefig("gene7_rna_vs_rna_velocity_with_regression.png")
 plt.close()
